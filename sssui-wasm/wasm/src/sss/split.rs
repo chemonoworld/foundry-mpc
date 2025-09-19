@@ -1,6 +1,6 @@
-use cait_sith_keplr::sss::split;
 use gloo_utils::format::JsValueSerdeExt;
 use k256::Secp256k1;
+use sssui_rs::sss::split;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]

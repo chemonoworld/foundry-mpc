@@ -273,25 +273,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
-name = "cait_sith_keplr"
-version = "0.8.0"
-source = "git+https://github.com/chainapsis/ewallet.git?branch=issue%2F29#2f55d297faad2ecc098a60720d17b3ad20c1bfd0"
-dependencies = [
- "auto_ops",
- "ck-meow",
- "digest",
- "ecdsa",
- "elliptic-curve",
- "getrandom",
- "k256",
- "magikitten",
- "rand_core",
- "rmp-serde",
- "serde",
- "subtle",
-]
-
-[[package]]
 name = "cast"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1444,7 +1425,6 @@ dependencies = [
 name = "sssui_wasm"
 version = "0.0.1"
 dependencies = [
- "cait_sith_keplr",
  "console_error_panic_hook",
  "ecdsa",
  "futures",
@@ -1453,6 +1433,7 @@ dependencies = [
  "k256",
  "serde",
  "serde_json",
+ "sssui-rs",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "wasm-bindgen-test",
