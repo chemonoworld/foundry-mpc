@@ -1,5 +1,5 @@
 [package]
-name = "sssui"
+name = "sssui-rs"
 description = "shamir-secret-sharing for SUI chain"
 repository = "https://github.com/chemonoworld/sss-ui"
 version = "0.8.0"
