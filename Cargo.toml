@@ -1,5 +1,5 @@
 [workspace]
-members = ["sssui", "sssui-wasm/wasm"]
+members = ["sssui-rs", "sssui-wasm/wasm"]
 
 [workspace.dependencies]
 cait_sith_keplr = { git = "https://github.com/chainapsis/ewallet.git", branch = "issue/29" }
