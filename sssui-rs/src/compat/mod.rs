@@ -1,4 +1,5 @@
 use elliptic_curve::{ops::Reduce, point::AffineCoordinates, Curve, CurveArithmetic, PrimeCurve};
+use p256::U256;
 use rand_core::CryptoRngCore;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
@@ -85,8 +86,11 @@ pub fn scalar_hash_k256(msg: &[u8]) -> k256::Scalar {
 #[cfg(any(feature = "p256", test))]
 pub mod p256_impl {
     use super::*;
-    use elliptic_curve::bigint::{Bounded, U512};
-    use p256::NistP256;
+    use elliptic_curve::{
+        bigint::{Bounded, U512},
+        ScalarPrimitive,
+    };
+    use p256::{NistP256, Scalar};
 
     impl CSCurve for NistP256 {
         const NAME: &'static [u8] = b"Secp256r1";
@@ -108,7 +112,16 @@ pub mod p256_impl {
         fn sample_scalar_constant_time<R: CryptoRngCore>(r: &mut R) -> Self::Scalar {
             let mut data = [0u8; 64];
             r.fill_bytes(&mut data);
-            <Self::Scalar as Reduce<U512>>::reduce_bytes(&data.into())
+            let a_bytes: [u8; 32] = data[0..32]
+                .try_into()
+                .expect("Failed to convert to [u8; 32]");
+            let b_bytes: [u8; 32] = data[32..64]
+                .try_into()
+                .expect("Failed to convert to [u8; 32]");
+            let a = <Self::Scalar as Reduce<U256>>::reduce_bytes(&a_bytes.into());
+            let b = <Self::Scalar as Reduce<U256>>::reduce_bytes(&b_bytes.into());
+            // ScalarPrimitive
+            // Scalar::from
         }
     }
 }
