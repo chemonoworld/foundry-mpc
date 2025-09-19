@@ -36,6 +36,7 @@ pub trait CSCurve: PrimeCurve + CurveArithmetic {
     fn sample_scalar_constant_time<R: CryptoRngCore>(r: &mut R) -> Self::Scalar;
 }
 
+// secp256k1
 #[cfg(any(feature = "k256", test))]
 pub mod k256_impl {
     use super::*;
@@ -68,7 +69,7 @@ pub mod k256_impl {
 }
 
 #[cfg(feature = "k256")]
-pub fn scalar_hash(msg: &[u8]) -> k256::Scalar {
+pub fn scalar_hash_k256(msg: &[u8]) -> k256::Scalar {
     use digest::{Digest, FixedOutput};
     use ecdsa::hazmat::DigestPrimitive;
     use elliptic_curve::ops::Reduce;
@@ -78,6 +79,51 @@ pub fn scalar_hash(msg: &[u8]) -> k256::Scalar {
     let m_bytes: FieldBytes = digest.finalize_fixed();
 
     <Scalar as Reduce<<Secp256k1 as Curve>::Uint>>::reduce_bytes(&m_bytes)
+}
+
+// secp256r1
+#[cfg(any(feature = "p256", test))]
+pub mod p256_impl {
+    use super::*;
+    use elliptic_curve::bigint::{Bounded, U512};
+    use p256::NistP256;
+
+    impl CSCurve for NistP256 {
+        const NAME: &'static [u8] = b"Secp256r1";
+        const BITS: usize = <Self::Uint as Bounded>::BITS;
+
+        fn serialize_point<S: Serializer>(
+            point: &Self::AffinePoint,
+            serializer: S,
+        ) -> Result<S::Ok, S::Error> {
+            point.serialize(serializer)
+        }
+
+        fn deserialize_point<'de, D: Deserializer<'de>>(
+            deserializer: D,
+        ) -> Result<Self::AffinePoint, D::Error> {
+            Self::AffinePoint::deserialize(deserializer)
+        }
+
+        fn sample_scalar_constant_time<R: CryptoRngCore>(r: &mut R) -> Self::Scalar {
+            let mut data = [0u8; 64];
+            r.fill_bytes(&mut data);
+            <Self::Scalar as Reduce<U512>>::reduce_bytes(&data.into())
+        }
+    }
+}
+
+#[cfg(feature = "p256")]
+pub fn scalar_hash_p256(msg: &[u8]) -> p256::Scalar {
+    use digest::{Digest, FixedOutput};
+    use ecdsa::hazmat::DigestPrimitive;
+    use elliptic_curve::ops::Reduce;
+    use p256::{FieldBytes, NistP256, Scalar};
+
+    let digest = <NistP256 as DigestPrimitive>::Digest::new_with_prefix(msg);
+    let m_bytes: FieldBytes = digest.finalize_fixed();
+
+    <Scalar as Reduce<<NistP256 as Curve>::Uint>>::reduce_bytes(&m_bytes)
 }
 
 pub fn x_coordinate<C: CSCurve>(point: &C::AffinePoint) -> C::Scalar {

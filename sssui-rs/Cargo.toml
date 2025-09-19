@@ -20,6 +20,11 @@ k256 = { version = "0.13.4", features = [
     "ecdsa",
     "serde",
 ], optional = true }
+p256 = { version = "0.13.2", features = [
+    "sha256",
+    "ecdsa",
+    "serde",
+], optional = true }
 magikitten = "0.2.0"
 rmp-serde = "1.1.2"
 serde = { version = "1.0.175", features = ["derive"] }
@@ -40,6 +45,7 @@ haisou-chan = { git = "https://github.com/cronokirby/haisou-chan", rev = "d28c46
 structopt = "0.3.26"
 
 [features]
-default = ["k256"]
+default = ["k256", "p256"]
 k256 = ["dep:k256"]
+p256 = ["dep:p256"]
 # async = ["dep:smol", "dep:event-listener"]
