@@ -112,16 +112,10 @@ pub mod p256_impl {
         fn sample_scalar_constant_time<R: CryptoRngCore>(r: &mut R) -> Self::Scalar {
             let mut data = [0u8; 64];
             r.fill_bytes(&mut data);
-            let a_bytes: [u8; 32] = data[0..32]
-                .try_into()
-                .expect("Failed to convert to [u8; 32]");
-            let b_bytes: [u8; 32] = data[32..64]
-                .try_into()
-                .expect("Failed to convert to [u8; 32]");
-            let a = <Self::Scalar as Reduce<U256>>::reduce_bytes(&a_bytes.into());
-            let b = <Self::Scalar as Reduce<U256>>::reduce_bytes(&b_bytes.into());
-            // ScalarPrimitive
-            // Scalar::from
+            let sp = ScalarPrimitive::from_slice(data.as_slice())
+                .expect("Failed to convert to scalar primitive");
+            let scalar = Scalar::from(sp);
+            scalar
         }
     }
 }
