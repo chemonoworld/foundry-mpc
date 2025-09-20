@@ -1,21 +1,86 @@
-// use ed25519_dalek::Ed25519;
-use frost_ed25519::keys::split;
+use frost_core::{Scalar, SigningKey};
+use frost_ed25519::{
+    keys::{split, IdentifierList},
+    rand_core::OsRng,
+    Ed25519Sha512, Identifier,
+};
 use gloo_utils::format::JsValueSerdeExt;
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
-pub fn sss_split(secret: JsValue, ks_node_hashes: JsValue, t: u32) -> Result<JsValue, JsValue> {
-    let secret: [u8; 32] = secret
-        .into_serde()
-        .map_err(|err| JsValue::from_str(&err.to_string()))?;
-    let ks_node_hashes: Vec<[u8; 32]> = ks_node_hashes
-        .into_serde()
-        .map_err(|err| JsValue::from_str(&err.to_string()))?;
+// #[wasm_bindgen]
+// pub fn sss_split_e25519(secret: JsValue, point_xs: JsValue, t: u32) -> Result<JsValue, JsValue> {
+//     let secret: [u8; 32] = secret
+//         .into_serde()
+//         .map_err(|err| JsValue::from_str(&err.to_string()))?;
+//     let point_xs: Vec<[u8; 32]> = point_xs
+//         .into_serde()
+//         .map_err(|err| JsValue::from_str(&err.to_string()))?;
 
-    // let out = split::<Secp256k1>(secret, ks_node_hashes, t)
-    //     .map_err(|err| JsValue::from_str(&err.to_string()))?;
+//     let max_signers = point_xs.len() as u16;
+//     let min_signers = t as u16;
+//     // let identifiers = IdentifierList::Default;
 
-    let out = "";
+//     let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret.as_slice())
+//         .expect("Failed to deserialize signing key");
 
-    JsValue::from_serde(&out).map_err(|err| JsValue::from_str(&err.to_string()))
+//     let identifiers = point_xs
+//         .iter()
+//         .map(|&x| Identifier::deserialize(x.as_slice()).expect("Failed to deserialize identifier"))
+//         .collect::<Vec<_>>();
+//     let identifier_list = IdentifierList::Custom(&identifiers);
+
+//     let mut rng = OsRng;
+//     let out = split(
+//         &signing_key,
+//         max_signers,
+//         min_signers,
+//         identifier_list,
+//         &mut rng,
+//     )
+//     .expect("Failed to split");
+
+//     JsValue::from_serde(&out).map_err(|err| JsValue::from_str(&err.to_string()))
+// }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sss_split_ed25519() {
+        let mut secret = [0u8; 32];
+        secret[31] = 1;
+        let mut point_xs = vec![[0u8; 32]; 3];
+        point_xs[0][31] = 1;
+        point_xs[1][31] = 2;
+        point_xs[2][31] = 3;
+        let t = 2;
+
+        let max_signers = point_xs.len() as u16;
+        let min_signers = t as u16;
+        // let identifiers = IdentifierList::Default;
+
+        let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret.as_slice())
+            .expect("Failed to deserialize signing key");
+
+        let identifiers = point_xs
+            .iter()
+            .map(|&x| {
+                Identifier::deserialize(x.as_slice()).expect("Failed to deserialize identifier")
+            })
+            .collect::<Vec<_>>();
+        let identifier_list = IdentifierList::Custom(&identifiers);
+
+        let mut rng = OsRng;
+        let out = split(
+            &signing_key,
+            max_signers,
+            min_signers,
+            identifier_list,
+            &mut rng,
+        )
+        .expect("Failed to split");
+
+        println!("out: {:?}", out);
+    }
 }
