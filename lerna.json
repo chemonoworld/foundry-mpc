@@ -1,0 +1,8 @@
+{
+    "packages": [
+      "sssui-ts"
+    ],
+    "version": "independent",
+    "npmClient": "yarn"
+  }
+  

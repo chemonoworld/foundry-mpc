@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "sssui-ci",
+  "packageManager": "yarn@4.7.0",
+  "scripts": {
+    "start": "ts-node src/main.ts"
+  },
+  "dependencies": {
+    "ts-node": "*"
+  },
+  "devDependencies": {
+    "@types/jest": "*",
+    "@types/node": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "jest": "*",
+    "ts-jest": "*",
+    "typescript": "*"
+  }
+}

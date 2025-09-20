@@ -1,0 +1,29 @@
+{
+    "private": true,
+    "workspaces": {
+        "packages": [
+            "sssui-ci",
+            "sssui-ts"
+        ]
+    },
+    "packageManager": "yarn@4.7.0",
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "ci": "yarn --cwd ./scripts/ci run start"
+    },
+    "devDependencies": {
+        "@jest/globals": "^30.0.4",
+        "@types/jest": "^30.0.0",
+        "@types/node": "^22",
+        "del-cli": "^6.0.0",
+        "jest": "^30.0.5",
+        "lerna": "8.2.3",
+        "ts-jest": "^29.4.1",
+        "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "ts-node": "^10.9.2"
+    }
+}
