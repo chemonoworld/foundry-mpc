@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 
-use crate::sss::point::Point256;
+use crate::point::Point256;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 

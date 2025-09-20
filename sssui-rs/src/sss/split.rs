@@ -4,7 +4,7 @@ use rand_core::OsRng;
 
 use crate::compat::CSCurve;
 use crate::math::Polynomial;
-use crate::sss::point::Point256;
+use crate::point::Point256;
 
 pub fn split<C: CSCurve>(
     secret: [u8; 32],

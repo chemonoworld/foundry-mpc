@@ -2,8 +2,8 @@ use elliptic_curve::bigint::Encoding;
 use elliptic_curve::Field;
 
 use crate::compat::CSCurve;
+use crate::point::Point256;
 use crate::sss::keyshares::KeysharePoints;
-use crate::sss::point::Point256;
 
 pub fn combine<C: CSCurve>(split_points: Vec<Point256>, t: u32) -> Result<[u8; 32], String> {
     let mut secret_scalar: C::Scalar = C::Scalar::ZERO;

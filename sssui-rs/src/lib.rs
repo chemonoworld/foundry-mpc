@@ -1,7 +1,9 @@
 pub mod compat;
 pub mod math;
+pub mod point;
 pub mod serde;
 pub mod sss;
+pub mod sss_ed25519;
 
 #[cfg(test)]
 mod tests;
