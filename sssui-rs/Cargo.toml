@@ -7,7 +7,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 readme = "readme.md"
-categories = ["cryptography]
+categories = ["cryptography"]
 # [build]
 # rustflags = ["--cfg", "getrandom_backend=\"linux_getrandom\""] 
 

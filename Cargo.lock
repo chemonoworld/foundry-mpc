@@ -1982,32 +1982,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "sssui-rs"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ea6a3201bb84db5b12b2837bb4157e1028166dba209aa6ed2af4729ab92676f"
-dependencies = [
- "auto_ops",
- "ck-meow",
- "digest",
- "ecdsa",
- "elliptic-curve",
- "getrandom",
- "k256",
- "magikitten",
- "p256",
- "rand_core",
- "rmp-serde",
- "serde",
- "subtle",
-]
-
-[[package]]
 name = "sssui_wasm"
 version = "0.0.1"
 dependencies = [
  "console_error_panic_hook",
  "ecdsa",
+ "frost-core",
  "frost-ed25519",
  "futures",
  "gloo-utils",
@@ -2015,7 +1995,7 @@ dependencies = [
  "k256",
  "serde",
  "serde_json",
- "sssui-rs 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sssui-rs",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "wasm-bindgen-test",
