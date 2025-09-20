@@ -7,40 +7,44 @@ use frost_ed25519::{
 use gloo_utils::format::JsValueSerdeExt;
 use wasm_bindgen::prelude::*;
 
-// #[wasm_bindgen]
-// pub fn sss_split_e25519(secret: JsValue, point_xs: JsValue, t: u32) -> Result<JsValue, JsValue> {
-//     let secret: [u8; 32] = secret
-//         .into_serde()
-//         .map_err(|err| JsValue::from_str(&err.to_string()))?;
-//     let point_xs: Vec<[u8; 32]> = point_xs
-//         .into_serde()
-//         .map_err(|err| JsValue::from_str(&err.to_string()))?;
+#[wasm_bindgen]
+pub fn sss_split_e25519(secret: JsValue, point_xs: JsValue, t: u32) -> Result<JsValue, JsValue> {
+    let secret: [u8; 32] = secret
+        .into_serde()
+        .map_err(|err| JsValue::from_str(&err.to_string()))?;
+    let point_xs: Vec<[u8; 32]> = point_xs
+        .into_serde()
+        .map_err(|err| JsValue::from_str(&err.to_string()))?;
 
-//     let max_signers = point_xs.len() as u16;
-//     let min_signers = t as u16;
-//     // let identifiers = IdentifierList::Default;
+    let max_signers = point_xs.len() as u16;
+    let min_signers = t as u16;
 
-//     let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret.as_slice())
-//         .expect("Failed to deserialize signing key");
+    let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret.as_slice())
+        .expect("Failed to deserialize signing key");
 
-//     let identifiers = point_xs
-//         .iter()
-//         .map(|&x| Identifier::deserialize(x.as_slice()).expect("Failed to deserialize identifier"))
-//         .collect::<Vec<_>>();
-//     let identifier_list = IdentifierList::Custom(&identifiers);
+    let identifiers = point_xs
+        .iter()
+        .map(|&x| Identifier::deserialize(x.as_slice()).expect("Failed to deserialize identifier"))
+        .collect::<Vec<_>>();
+    let identifier_list = IdentifierList::Custom(&identifiers);
 
-//     let mut rng = OsRng;
-//     let out = split(
-//         &signing_key,
-//         max_signers,
-//         min_signers,
-//         identifier_list,
-//         &mut rng,
-//     )
-//     .expect("Failed to split");
+    let mut rng = OsRng;
+    let share_map_tup = split(
+        &signing_key,
+        max_signers,
+        min_signers,
+        identifier_list,
+        &mut rng,
+    )
+    .expect("Failed to split");
+    // share_map_tup.0은 HashMap<Identifier, SigningShare> 타입임
+    // 이를 벡터로 변환 (예: (Identifier, SigningShare) 쌍의 벡터)
+    let share_vec = share_map_tup.0.into_iter().collect::<Vec<_>>();
 
-//     JsValue::from_serde(&out).map_err(|err| JsValue::from_str(&err.to_string()))
-// }
+    // JsValue::from_serde(&share_vec).map_err(|err| JsValue::from_str(&err.to_string()))
+
+    JsValue::from_serde("").map_err(|err| JsValue::from_str(&err.to_string()))
+}
 
 #[cfg(test)]
 mod tests {
