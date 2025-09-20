@@ -9,16 +9,21 @@ SSSui provides secure and efficient implementations of cryptographic protocols f
 ## Components
 
 ### sssui-rs
+
 Core Rust implementation of Shamir Secret Sharing algorithms with support for:
+
 - **secp256k1**: Bitcoin's elliptic curve
 - **secp256r1 (NIST P-256)**: NIST standard elliptic curve
 - **ed25519**: Edwards curve for high-performance cryptography
 
 ### sssui-wasm
+
 WebAssembly packaging layer that exposes the Rust functionality to JavaScript environments, enabling cross-platform deployment with native performance.
 
 ### sssui-ts
+
 JavaScript/TypeScript bindings and utilities for the WebAssembly module, providing:
+
 - Type-safe interfaces for TypeScript projects
 - Browser and Node.js compatibility
 - Easy integration with existing JavaScript applications
@@ -34,16 +39,19 @@ JavaScript/TypeScript bindings and utilities for the WebAssembly module, providi
 ## Installation
 
 ### Rust
+
 ```bash
 cargo add sssui-rs
 ```
 
 ### JavaScript/TypeScript (via npm)
+
 ```bash
 npm install sssui-ts
 ```
 
 ### WebAssembly (direct)
+
 The WASM module can be found in the `sssui-wasm` package for direct integration.
 
 ## Repository Structure
