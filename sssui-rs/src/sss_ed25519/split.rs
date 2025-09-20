@@ -8,11 +8,14 @@ use frost_ed25519::{
 use crate::point::Point256;
 
 pub fn sss_split_ed25519(
-    secret: [u8; 32],
+    secret_be: [u8; 32],
     point_xs: Vec<[u8; 32]>,
     t: u32,
 ) -> Result<Vec<Point256>, String> {
-    let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret.as_slice())
+    let mut secret_le = secret_be;
+    secret_le.reverse();
+    let secret_be_slice = secret_le;
+    let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret_be_slice.as_slice())
         .expect("Failed to deserialize signing key");
 
     let max_signers = point_xs.len() as u16;

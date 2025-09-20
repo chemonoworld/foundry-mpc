@@ -43,7 +43,7 @@ pub fn compute_lagrange_coefficient<C: Ciphersuite>(
     )
 }
 
-pub fn interpolate_ed25519(keyshares: &Vec<Point256>) -> Result<[u8; 32], String> {
+pub fn interpolate_ed25519(keyshares: Vec<&Point256>) -> Result<[u8; 32], String> {
     let x_vec = keyshares.iter().map(|k| k.x).collect::<Vec<_>>();
     let identifiers = x_vec
         .iter()
