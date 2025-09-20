@@ -1511,7 +1511,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sssui-rs"
+name = "sssui-mpc-rs"
 version = "0.1.0"
 dependencies = [
  "auto_ops",
@@ -1547,7 +1547,7 @@ dependencies = [
  "p256",
  "serde",
  "serde_json",
- "sssui-rs",
+ "sssui-mpc-rs",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "wasm-bindgen-test",

@@ -1,8 +1,8 @@
 use gloo_utils::format::JsValueSerdeExt;
 use k256::Secp256k1;
 use p256::NistP256;
-use sssui_rs::point::Point256;
-use sssui_rs::sss::combine;
+use sssui_mpc_rs::point::Point256;
+use sssui_mpc_rs::sss::combine;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]

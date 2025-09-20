@@ -1,6 +1,6 @@
 use gloo_utils::format::JsValueSerdeExt;
-use sssui_rs::point::Point256;
-use sssui_rs::sss_ed25519::sss_combine_ed25519;
+use sssui_mpc_rs::point::Point256;
+use sssui_mpc_rs::sss_ed25519::sss_combine_ed25519;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
