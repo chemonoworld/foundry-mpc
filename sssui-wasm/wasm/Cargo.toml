@@ -1,7 +1,7 @@
 [package]
 name = "sssui_wasm"
 description = "TBDx"
-version = "0.1.7"
+version = "0.1.8"
 categories = ["wasm"]
 readme = "README.md"
 edition = "2018"
