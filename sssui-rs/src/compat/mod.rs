@@ -1,5 +1,4 @@
 use elliptic_curve::{ops::Reduce, point::AffineCoordinates, Curve, CurveArithmetic, PrimeCurve};
-use p256::U256;
 use rand_core::CryptoRngCore;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
@@ -86,10 +85,7 @@ pub fn scalar_hash_k256(msg: &[u8]) -> k256::Scalar {
 #[cfg(any(feature = "p256", test))]
 pub mod p256_impl {
     use super::*;
-    use elliptic_curve::{
-        bigint::{Bounded, U512},
-        ScalarPrimitive,
-    };
+    use elliptic_curve::{bigint::Bounded, ScalarPrimitive};
     use p256::{NistP256, Scalar};
 
     impl CSCurve for NistP256 {

@@ -1,4 +1,4 @@
-use frost_core::{Scalar, SigningKey};
+use frost_core::SigningKey;
 use frost_ed25519::{
     keys::{split, IdentifierList},
     rand_core::OsRng,
