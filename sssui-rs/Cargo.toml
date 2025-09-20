@@ -1,5 +1,6 @@
 [package]
 name = "sssui-rs"
+authors = ["Jinwoo Lee <jinwoo0454@gmail.com>"]
 description = "shamir-secret-sharing for SUI chain"
 repository = "https://github.com/chemonoworld/sssui"
 version = "0.1.0"
