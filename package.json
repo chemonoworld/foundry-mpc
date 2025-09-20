@@ -13,6 +13,10 @@
     "scripts": {
         "ci": "yarn --cwd ./scripts/ci run start"
     },
+    "dependencies": {
+        "chalk": "^5.5.0",
+        "ts-node": "^10.9.2"
+    },
     "devDependencies": {
         "@jest/globals": "^30.0.4",
         "@types/jest": "^30.0.0",
@@ -22,8 +26,5 @@
         "lerna": "8.2.3",
         "ts-jest": "^29.4.1",
         "typescript": "^5.8.3"
-    },
-    "dependencies": {
-        "ts-node": "^10.9.2"
     }
 }

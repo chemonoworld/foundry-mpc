@@ -9,10 +9,9 @@
     "ts-node": "*"
   },
   "devDependencies": {
+    "@jest/globals": "*",
     "@types/jest": "*",
     "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
     "jest": "*",
     "ts-jest": "*",
     "typescript": "*"
