@@ -5,7 +5,8 @@
   "main": "./src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build:wasm": "wasm-pack build wasm --target web --out-dir ../pkg"
+    "build:wasm": "wasm-pack build wasm --target web --out-dir ../pkg",
+    "build:nodejs": "wasm-pack build wasm --target nodejs --out-dir ../pkg"
   },
   "dependencies": {
     "wasm-pack": "^0.13.1"
