@@ -2,10 +2,10 @@
 name = "sssui-rs"
 description = "shamir-secret-sharing for SUI chain"
 repository = "https://github.com/chemonoworld/sssui"
-version = "0.8.0"
+version = "0.1.0"
 edition = "2021"
 license = "MIT"
-
+categories = ["cryptography"]
 # [build]
 # rustflags = ["--cfg", "getrandom_backend=\"linux_getrandom\""] 
 
