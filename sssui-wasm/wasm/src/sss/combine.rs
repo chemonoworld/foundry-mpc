@@ -7,15 +7,17 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub fn combine_ec(points: JsValue, t: u32, curve: String) -> Result<JsValue, JsValue> {
-    // TODO @Hyeong-soo
-    // curve = "secp256k1" | "secp256r1" 둘 중 하나가 되어야 하고 나머지는 그냥 에러 던지기
+    let points: Vec<Point256> = points
+        .into_serde()
+        .map_err(|err| JsValue::from_str(&err.to_string()))?;
 
-    unimplemented!()
-    // let points: Vec<Point256> = points
-    //     .into_serde()
-    //     .map_err(|err| JsValue::from_str(&err.to_string()))?;
+    let combine_fn = match curve.as_str() {
+        "secp256k1" => combine::<Secp256k1>,
+        "secp256r1" => combine::<NistP256>,
+        other => return Err(JsValue::from_str(&format!("Unsupported curve: {}", other))),
+    };
 
-    // let out = combine::<Secp256k1>(points, t).map_err(|err| JsValue::from_str(&err.to_string()))?;
+    let secret = combine_fn(points, t).map_err(|err| JsValue::from_str(&err))?;
 
-    // JsValue::from_serde(&out).map_err(|err| JsValue::from_str(&err.to_string()))
+    JsValue::from_serde(&secret).map_err(|err| JsValue::from_str(&err.to_string()))
 }
