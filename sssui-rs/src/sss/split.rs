@@ -8,14 +8,14 @@ use crate::point::Point256;
 
 pub fn split<C: CSCurve>(
     secret: [u8; 32],
-    ks_node_hashes: Vec<[u8; 32]>,
+    point_xs: Vec<[u8; 32]>,
     t: u32,
 ) -> Result<Vec<Point256>, String> {
     if secret.len() != 32 {
         return Err("Secret must be 32 bytes".to_string());
     }
 
-    if (ks_node_hashes.len() as u32) < t {
+    if (point_xs.len() as u32) < t {
         return Err("KS node hashes must be greater than t".to_string());
     }
 
@@ -31,9 +31,9 @@ pub fn split<C: CSCurve>(
 
     let polynomial = Polynomial::<C>::extend_random(&mut rng, t as usize, &constant);
 
-    let truncate_hashes = ks_node_hashes.iter().take(t as usize).collect::<Vec<_>>();
+    let x_vec = point_xs.iter().collect::<Vec<_>>();
 
-    let ks_node_hash_scalars = truncate_hashes
+    let ks_node_hash_scalars = x_vec
         .iter()
         .map(|&hash| {
             let sp = ScalarPrimitive::<C>::from_slice(hash)
