@@ -1544,6 +1544,7 @@ dependencies = [
  "gloo-utils",
  "js-sys",
  "k256",
+ "p256",
  "serde",
  "serde_json",
  "sssui-rs",
