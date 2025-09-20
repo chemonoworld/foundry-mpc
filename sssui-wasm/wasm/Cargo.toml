@@ -20,7 +20,7 @@ strip = true
 #default = ["wee_alloc"]
 
 [dependencies]
-sssui-ecdsa-rs = { workspace = true, features = ['k256'] }
+sssui-rs = { workspace = true, features = ['k256'] }
 frost-ed25519 = { workspace = true }
 frost-core = { workspace = true }
 wasm-bindgen = "0.2.100"
