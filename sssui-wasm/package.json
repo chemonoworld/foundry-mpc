@@ -1,12 +1,13 @@
 {
-  "name": "sssui-wasm",
-  "version": "0.1.0",
+  "name": "sssui_wasm",
+  "version": "0.1.1",
   "private": false,
   "main": "./src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build:wasm": "wasm-pack build wasm --target web --out-dir ../pkg",
-    "build:nodejs": "wasm-pack build wasm --target nodejs --out-dir ../pkg"
+    "build:nodejs": "wasm-pack build wasm --target nodejs --out-dir ../pkg",
+    "build:bundler": "wasm-pack build wasm --target bundler --out-dir ../pkg"
   },
   "dependencies": {
     "wasm-pack": "^0.13.1"
