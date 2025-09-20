@@ -1,4 +1,5 @@
 pub mod compat;
+pub mod keyshares;
 pub mod math;
 pub mod point;
 pub mod serde;

@@ -1969,6 +1969,8 @@ dependencies = [
  "easy-parallel",
  "ecdsa",
  "elliptic-curve",
+ "frost-core",
+ "frost-ed25519",
  "getrandom 0.2.16",
  "haisou-chan",
  "k256",
@@ -1987,8 +1989,6 @@ version = "0.1.2"
 dependencies = [
  "console_error_panic_hook",
  "ecdsa",
- "frost-core",
- "frost-ed25519",
  "futures",
  "gloo-utils",
  "js-sys",

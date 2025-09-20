@@ -4,6 +4,13 @@ edition.workspace = true
 rust-version.workspace = true
 version = "2.2.0"
 readme = "README.md"
+authors = [
+    "Deirdre Connolly <durumcrustulum@gmail.com>",
+    "Chelsea Komlo <me@chelseakomlo.com>",
+    "Conrado Gouvea <conradoplg@gmail.com>",
+    "Natalie Eskinazi <natalie@znfd.org>",
+]
+repository = "https://github.com/ZcashFoundation/frost"
 license.workspace = true
 keywords = ["cryptography", "threshold", "signature", "schnorr", "randomized"]
 description = "Types and traits to support implementing a re-randomized variant of Flexible Round-Optimized Schnorr Threshold signature schemes (FROST)."

@@ -4,7 +4,7 @@ use sssui_rs::sss::split;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn sss_split(secret: JsValue, ks_node_hashes: JsValue, t: u32) -> Result<JsValue, JsValue> {
+pub fn split_ec(secret: JsValue, ks_node_hashes: JsValue, t: u32) -> Result<JsValue, JsValue> {
     let secret: [u8; 32] = secret
         .into_serde()
         .map_err(|err| JsValue::from_str(&err.to_string()))?;

@@ -21,8 +21,6 @@ strip = true
 
 [dependencies]
 sssui-rs = { workspace = true, features = ['k256'] }
-frost-ed25519 = { workspace = true }
-frost-core = { workspace = true }
 wasm-bindgen = "0.2.100"
 k256 = { version = "0.13.4", features = ["sha256", "ecdsa", "serde"] }
 ecdsa = { version = "0.16.8", features = ["digest", "hazmat"] }

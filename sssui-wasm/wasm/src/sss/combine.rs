@@ -5,7 +5,7 @@ use sssui_rs::sss::combine;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn sss_combine(points: JsValue, t: u32) -> Result<JsValue, JsValue> {
+pub fn combine_ec(points: JsValue, t: u32) -> Result<JsValue, JsValue> {
     let points: Vec<Point256> = points
         .into_serde()
         .map_err(|err| JsValue::from_str(&err.to_string()))?;
