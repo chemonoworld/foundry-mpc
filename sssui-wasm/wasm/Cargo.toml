@@ -23,6 +23,7 @@ strip = true
 sssui-rs = { workspace = true, features = ['k256'] }
 wasm-bindgen = "0.2.100"
 k256 = { version = "0.13.4", features = ["sha256", "ecdsa", "serde"] }
+p256 = { version = "0.13.2", features = ["sha256", "ecdsa", "serde"] }
 ecdsa = { version = "0.16.8", features = ["digest", "hazmat"] }
 serde = { version = "1.0.175", features = ["derive"] }
 serde_json = "1.0"
