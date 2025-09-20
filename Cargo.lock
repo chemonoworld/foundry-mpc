@@ -1959,7 +1959,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sssui-rs"
+name = "sssui-ecdsa-rs"
 version = "0.1.0"
 dependencies = [
  "auto_ops",
@@ -1995,7 +1995,7 @@ dependencies = [
  "k256",
  "serde",
  "serde_json",
- "sssui-rs",
+ "sssui-ecdsa-rs",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "wasm-bindgen-test",

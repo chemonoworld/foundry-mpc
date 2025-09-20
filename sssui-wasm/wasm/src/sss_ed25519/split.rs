@@ -81,6 +81,10 @@ mod tests {
         )
         .expect("Failed to split");
 
-        println!("out: {:?}", out);
+        // println!("out: {:?}", out);
+        println!("out[0]: {:?}", out.0.get(identifiers.get(0).unwrap()));
+        let out_0 = out.0.get(identifiers.get(0).unwrap()).unwrap();
+        let out_0_signing_share = out_0.signing_share();
+        println!("out_0_signing_share: {:?}", out_0_signing_share.to_scalar());
     }
 }
