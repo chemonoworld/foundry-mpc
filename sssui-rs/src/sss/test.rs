@@ -3,8 +3,8 @@ use k256::Secp256k1;
 use rand_core::OsRng;
 use rand_core::RngCore;
 
+use crate::keyshares::KeysharePoints;
 use crate::point::Point256;
-use crate::sss::keyshares::KeysharePoints;
 use crate::sss::{combine::combine, combine::lagrange_coefficient, split};
 
 #[test]

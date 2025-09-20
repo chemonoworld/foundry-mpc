@@ -45,7 +45,7 @@ getrandom = { version = "0.2", features = ["js"] }
 [dev-dependencies]
 criterion = "0.4"
 easy-parallel = "3.2.0"
-haisou-chan = { git = "https://github.com/cronokirby/haisou-chan", rev = "d28c46e51acfcb818236caae293f6e56dff41ad2" }
+# haisou-chan = { git = "https://github.com/cronokirby/haisou-chan", rev = "d28c46e51acfcb818236caae293f6e56dff41ad2" }
 structopt = "0.3.26"
 
 [features]
