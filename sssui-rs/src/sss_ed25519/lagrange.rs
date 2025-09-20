@@ -1,6 +1,7 @@
 use std::collections::BTreeSet;
 
-use frost_core::{Ciphersuite, Error, Field, Group, Identifier, Scalar};
+use frost_core::{Ciphersuite, Error, Field, Group, Identifier, Scalar, SigningKey};
+use frost_ed25519::Ed25519Sha512;
 
 use crate::point::Point256;
 
@@ -42,12 +43,28 @@ pub fn compute_lagrange_coefficient<C: Ciphersuite>(
     )
 }
 
-pub fn interpolate_ed25519<C: Ciphersuite>(keyshares: &Vec<Point256>) -> Result<[u8; 32], String> {
+pub fn interpolate_ed25519(keyshares: &Vec<Point256>) -> Result<[u8; 32], String> {
     let x_vec = keyshares.iter().map(|k| k.x).collect::<Vec<_>>();
-    unimplemented!()
-    // 1. x_vec -> identifiers
-    // 2. call compute_lagrange_coefficient -> Vec<Scalar>(coeffs)
-    // 3. sum(coeffs * keyshares.y) -> Scalar
-    // 4. Scalar -> [u8; 32]
-    // 5. Ok([u8; 32])
+    let identifiers = x_vec
+        .iter()
+        .map(|x| {
+            Identifier::<Ed25519Sha512>::deserialize(x.as_slice())
+                .expect("Failed to deserialize identifier")
+        })
+        .collect::<BTreeSet<_>>();
+    let coeffs = identifiers
+        .iter()
+        .map(|id| {
+            compute_lagrange_coefficient::<Ed25519Sha512>(&identifiers, None, *id)
+                .expect("Failed to compute lagrange coefficient")
+        })
+        .collect::<Vec<_>>();
+    let mut sum = Scalar::<Ed25519Sha512>::ZERO;
+    for (i, coeff) in coeffs.iter().enumerate() {
+        let y_scalar = SigningKey::<Ed25519Sha512>::deserialize(keyshares[i].y.as_slice())
+            .expect("Failed to deserialize signing key")
+            .to_scalar();
+        sum = sum + *coeff * y_scalar;
+    }
+    Ok(sum.to_bytes())
 }
