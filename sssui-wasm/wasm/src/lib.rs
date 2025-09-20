@@ -1,4 +1,5 @@
 pub mod sss;
+pub mod sss_ed25519;
 
 use console_error_panic_hook;
 use std::sync::Once;
