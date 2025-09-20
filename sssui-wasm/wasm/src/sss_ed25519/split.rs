@@ -5,10 +5,11 @@ use frost_ed25519::{
     Ed25519Sha512, Identifier,
 };
 use gloo_utils::format::JsValueSerdeExt;
+use sssui_rs::point::Point256;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn sss_split_e25519(secret: JsValue, point_xs: JsValue, t: u32) -> Result<JsValue, JsValue> {
+pub fn sss_split_ed25519(secret: JsValue, point_xs: JsValue, t: u32) -> Result<JsValue, JsValue> {
     let secret: [u8; 32] = secret
         .into_serde()
         .map_err(|err| JsValue::from_str(&err.to_string()))?;
@@ -37,13 +38,17 @@ pub fn sss_split_e25519(secret: JsValue, point_xs: JsValue, t: u32) -> Result<Js
         &mut rng,
     )
     .expect("Failed to split");
-    // share_map_tup.0은 HashMap<Identifier, SigningShare> 타입임
-    // 이를 벡터로 변환 (예: (Identifier, SigningShare) 쌍의 벡터)
     let share_vec = share_map_tup.0.into_iter().collect::<Vec<_>>();
 
-    // JsValue::from_serde(&share_vec).map_err(|err| JsValue::from_str(&err.to_string()))
+    let share_points: Vec<Point256> = share_vec
+        .into_iter()
+        .map(|(identifier, share)| Point256 {
+            x: identifier.to_scalar().to_bytes(),
+            y: share.signing_share().to_scalar().to_bytes(),
+        })
+        .collect();
 
-    JsValue::from_serde("").map_err(|err| JsValue::from_str(&err.to_string()))
+    JsValue::from_serde(&share_points).map_err(|err| JsValue::from_str(&err.to_string()))
 }
 
 #[cfg(test)]
@@ -62,7 +67,6 @@ mod tests {
 
         let max_signers = point_xs.len() as u16;
         let min_signers = t as u16;
-        // let identifiers = IdentifierList::Default;
 
         let signing_key = SigningKey::<Ed25519Sha512>::deserialize(secret.as_slice())
             .expect("Failed to deserialize signing key");
@@ -85,10 +89,16 @@ mod tests {
         )
         .expect("Failed to split");
 
-        // println!("out: {:?}", out);
-        println!("out[0]: {:?}", out.0.get(identifiers.get(0).unwrap()));
+        let i_0 = identifiers.get(0).unwrap();
         let out_0 = out.0.get(identifiers.get(0).unwrap()).unwrap();
         let out_0_signing_share = out_0.signing_share();
         println!("out_0_signing_share: {:?}", out_0_signing_share.to_scalar());
+        println!("i_0: {:?}", i_0.to_scalar().to_bytes());
+
+        let i_1 = identifiers.get(1).unwrap();
+        let out_1 = out.0.get(identifiers.get(1).unwrap()).unwrap();
+        let out_1_signing_share = out_1.signing_share();
+        println!("out_1_signing_share: {:?}", out_1_signing_share.to_scalar());
+        println!("i_1: {:?}", i_1.to_scalar().to_bytes());
     }
 }
