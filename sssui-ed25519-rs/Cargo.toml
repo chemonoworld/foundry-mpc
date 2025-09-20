@@ -1,6 +1,6 @@
 [package]
-name = "sssui-rs"
-description = "shamir-secret-sharing for SUI chain"
+name = "sssui-ed25519-rs"
+description = "shamir-secret-sharing on ed25519 curve for SUI chain"
 repository = "https://github.com/chemonoworld/sssui"
 version = "0.8.0"
 edition = "2021"
@@ -41,11 +41,6 @@ getrandom = { version = "0.2", features = ["js"] }
 [dev-dependencies]
 criterion = "0.4"
 easy-parallel = "3.2.0"
-haisou-chan = { git = "https://github.com/cronokirby/haisou-chan", rev = "d28c46e51acfcb818236caae293f6e56dff41ad2" }
 structopt = "0.3.26"
 
 [features]
-default = ["k256", "p256"]
-k256 = ["dep:k256"]
-p256 = ["dep:p256"]
-# async = ["dep:smol", "dep:event-listener"]
