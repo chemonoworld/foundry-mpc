@@ -5,7 +5,6 @@ pub fn sss_combine_ed25519(split_points: Vec<Point256>, t: u32) -> Result<[u8; 3
         return Err("Not enough keyshare points to combine".to_string());
     }
 
-    // find lagrange coefficient
     let lagrange_coefficient = interpolate_ed25519(&split_points);
     if lagrange_coefficient.is_err() {
         return Err(lagrange_coefficient.err().unwrap());
