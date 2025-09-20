@@ -2,6 +2,8 @@ use std::collections::BTreeSet;
 
 use frost_core::{Ciphersuite, Error, Field, Group, Identifier, Scalar};
 
+use crate::point::Point256;
+
 pub fn compute_lagrange_coefficient<C: Ciphersuite>(
     x_set: &BTreeSet<Identifier<C>>,
     x: Option<Identifier<C>>,
@@ -38,4 +40,14 @@ pub fn compute_lagrange_coefficient<C: Ciphersuite>(
         num * <<C::Group as Group>::Field>::invert(&den)
             .map_err(|_| Error::DuplicatedIdentifier)?,
     )
+}
+
+pub fn interpolate_ed25519<C: Ciphersuite>(keyshares: &Vec<Point256>) -> Result<[u8; 32], String> {
+    let x_vec = keyshares.iter().map(|k| k.x).collect::<Vec<_>>();
+    unimplemented!()
+    // 1. x_vec -> identifiers
+    // 2. call compute_lagrange_coefficient -> Vec<Scalar>(coeffs)
+    // 3. sum(coeffs * keyshares.y) -> Scalar
+    // 4. Scalar -> [u8; 32]
+    // 5. Ok([u8; 32])
 }
