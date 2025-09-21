@@ -819,6 +819,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@keplr-ewallet/stdlib-js@npm:^0.0.2-rc.18":
+  version: 0.0.2-rc.19
+  resolution: "@keplr-ewallet/stdlib-js@npm:0.0.2-rc.19"
+  checksum: 10c0/6fa76c2af221e83ff9421dd312642485fa7b714daca37290bb31207cd1b27e5c0adb6fd2480d73c7d89c9cdb8ec2b6be25f2828087f44d44e489855feb7ff60d
+  languageName: node
+  linkType: hard
+
 "@lerna/create@npm:8.2.3":
   version: 8.2.3
   resolution: "@lerna/create@npm:8.2.3"
@@ -6982,27 +6989,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"sssui-ts@workspace:sssui-ts":
+"sssui-mpc-ts@workspace:sssui-mpc-ts":
   version: 0.0.0-use.local
-  resolution: "sssui-ts@workspace:sssui-ts"
+  resolution: "sssui-mpc-ts@workspace:sssui-mpc-ts"
   dependencies:
     "@jest/globals": "npm:*"
+    "@keplr-ewallet/stdlib-js": "npm:^0.0.2-rc.18"
     "@types/jest": "npm:*"
     "@types/node": "npm:*"
     del-cli: "npm:*"
     jest: "npm:*"
-    sssui_wasm: "npm:*"
     ts-jest: "npm:*"
+    ts-node: "npm:^10.9.2"
     typescript: "npm:*"
   languageName: unknown
   linkType: soft
-
-"sssui_wasm@npm:*":
-  version: 0.1.8
-  resolution: "sssui_wasm@npm:0.1.8"
-  checksum: 10c0/b6e44c804926b48e4e2a14d96850d40a8ae829c7ae93e00e1d6a11d2129497b4b79ba699b49be0d17004822587993ae597a90c9391753a385cb94814ef9cf9a6
-  languageName: node
-  linkType: hard
 
 "stack-utils@npm:^2.0.6":
   version: 2.0.6
