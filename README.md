@@ -23,7 +23,7 @@ Core Rust implementation of Shamir Secret Sharing algorithms with support for:
 
 WebAssembly packaging layer that exposes the Rust functionality to JavaScript environments, enabling cross-platform deployment with native performance.
 
-### sssui-mpc-ts
+### sssui-mpc-ts(WIP)
 
 JavaScript/TypeScript bindings and utilities for the WebAssembly module, providing:
 
