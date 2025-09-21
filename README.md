@@ -8,7 +8,7 @@ SSSui provides secure and efficient implementations of cryptographic protocols f
 
 ## Components
 
-### sssui-rs
+### sssui-mpc-rs
 
 Core Rust implementation of Shamir Secret Sharing algorithms with support for:
 
@@ -20,7 +20,7 @@ Core Rust implementation of Shamir Secret Sharing algorithms with support for:
 
 WebAssembly packaging layer that exposes the Rust functionality to JavaScript environments, enabling cross-platform deployment with native performance.
 
-### sssui-ts
+### sssui-mpc-ts
 
 JavaScript/TypeScript bindings and utilities for the WebAssembly module, providing:
 
@@ -41,13 +41,13 @@ JavaScript/TypeScript bindings and utilities for the WebAssembly module, providi
 ### Rust
 
 ```bash
-cargo add sssui-rs
+cargo add sssui-mpc-rs
 ```
 
 ### JavaScript/TypeScript (via npm)
 
 ```bash
-npm install sssui-ts
+npm install sssui-mpc-ts
 ```
 
 ### WebAssembly (direct)
@@ -58,9 +58,9 @@ The WASM module can be found in the `sssui-wasm` package for direct integration.
 
 ```
 sss-ui/
-├── sssui-rs/          # Core Rust implementation
+├── sssui-mpc-rs/          # Core Rust implementation
 ├── sssui-wasm/        # WebAssembly bindings
-├── sssui-ts/          # TypeScript/JavaScript package
+├── sssui-mpc-ts/          # TypeScript/JavaScript package
 ├── frost-core/        # FROST protocol core (threshold signatures) forked from ZcashFoundation/frost
 ├── frost-ed25519/     # FROST implementation for ed25519 forked from ZcashFoundation/frost
 └── frost-rerandomized/ # Rerandomized FROST variant forked from ZcashFoundation/frost
