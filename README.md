@@ -86,7 +86,7 @@ Contributions are welcome! Please ensure all cryptographic implementations are t
 
 ## Authors
 
-- chemonoworld (jinwoo@keplr.app)
+- chemonoworld (jinwoo0454@gmail.com)
 - Hyeongsoo Kim (hyeongsoo@postech.ac.kr)
 
 ## Repository
