@@ -8,6 +8,9 @@ SSSui provides secure and efficient implementations of cryptographic protocols f
 
 ## Components
 
+### Demo app
+https://github.com/Hyeong-soo/sssui-demo
+
 ### sssui-mpc-rs
 
 Core Rust implementation of Shamir Secret Sharing algorithms with support for:
