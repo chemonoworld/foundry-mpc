@@ -1,6 +1,7 @@
 {
     "packages": [
-      "sssui-ts"
+      "sssui-ts",
+      "sssui_wasm"
     ],
     "version": "independent",
     "npmClient": "yarn"

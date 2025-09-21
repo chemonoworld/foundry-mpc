@@ -6991,10 +6991,18 @@ __metadata:
     "@types/node": "npm:*"
     del-cli: "npm:*"
     jest: "npm:*"
+    sssui_wasm: "npm:*"
     ts-jest: "npm:*"
     typescript: "npm:*"
   languageName: unknown
   linkType: soft
+
+"sssui_wasm@npm:*":
+  version: 0.1.8
+  resolution: "sssui_wasm@npm:0.1.8"
+  checksum: 10c0/b6e44c804926b48e4e2a14d96850d40a8ae829c7ae93e00e1d6a11d2129497b4b79ba699b49be0d17004822587993ae597a90c9391753a385cb94814ef9cf9a6
+  languageName: node
+  linkType: hard
 
 "stack-utils@npm:^2.0.6":
   version: 2.0.6

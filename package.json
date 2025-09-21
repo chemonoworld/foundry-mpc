@@ -3,7 +3,8 @@
     "workspaces": {
         "packages": [
             "scripts/ci",
-            "sssui-ts"
+            "sssui-ts",
+            "sssui_wasm"
         ]
     },
     "packageManager": "yarn@4.7.0",
