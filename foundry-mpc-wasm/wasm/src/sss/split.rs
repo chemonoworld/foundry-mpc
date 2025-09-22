@@ -1,7 +1,7 @@
+use foundry_mpc_rs::sss::split;
 use gloo_utils::format::JsValueSerdeExt;
 use k256::Secp256k1;
 use p256::NistP256;
-use sssui_mpc_rs::sss::split;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]

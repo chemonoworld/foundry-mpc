@@ -7,12 +7,12 @@ authors = [
     "Hyeongsoo Kim <hyeongsoo@postech.ac.kr",
 ]
 categories = ["cryptography"]
-repository = "https://github.com/chemonoworld/sssui"
+repository = "https://github.com/chemonoworld/foundry-mpc"
 license = "MIT OR Apache-2.0"
 
 [workspace]
 members = [
-    "sssui-mpc-rs",
+    "foundry-mpc-rs",
     "foundry-mpc-wasm/wasm",
     "frost-core",
     "frost-ed25519",
@@ -32,7 +32,7 @@ rand_core = "0.6"
 serde_json = "1.0"
 
 
-sssui-mpc-rs = { path = "sssui-mpc-rs" }
+foundry-mpc-rs = { path = "foundry-mpc-rs" }
 frost-core = { path = "frost-core", version = "2.2.0", default-features = false }
 frost-rerandomized = { path = "frost-rerandomized", version = "2.2.0", default-features = false }
 frost-ed25519 = { path = "frost-ed25519", version = "2.2.0", default-features = false }
