@@ -6,6 +6,8 @@ A Rust and WebAssembly-based cryptographic library implementing Multi-Party Comp
 
 foundry-mpc provides secure and efficient implementations of cryptographic protocols for distributed systems, enabling secure secret sharing and threshold cryptography across multiple participants. The library is designed to work seamlessly in both browser and Node.js environments through WebAssembly bindings.
 
+Inspired by Lúcás C. Meier and ZcashFoundation
+
 ## Components
 
 ### Demo app
