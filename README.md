@@ -1,17 +1,18 @@
-# SSSui
+# foundry-mpc
 
 A Rust and WebAssembly-based cryptographic library implementing Multi-Party Computation (MPC) algorithms, specifically Shamir Secret Sharing and Threshold Signature Schemes (to be added in future releases), across three elliptic curves: secp256k1, secp256r1 (NIST P-256), and ed25519.
 
 ## Overview
 
-SSSui provides secure and efficient implementations of cryptographic protocols for distributed systems, enabling secure secret sharing and threshold cryptography across multiple participants. The library is designed to work seamlessly in both browser and Node.js environments through WebAssembly bindings.
+foundry-mpc provides secure and efficient implementations of cryptographic protocols for distributed systems, enabling secure secret sharing and threshold cryptography across multiple participants. The library is designed to work seamlessly in both browser and Node.js environments through WebAssembly bindings.
 
 ## Components
 
 ### Demo app
+
 https://github.com/Hyeong-soo/sssui-demo
 
-### sssui-mpc-rs
+### foundry-mpc-rs
 
 Core Rust implementation of Shamir Secret Sharing algorithms with support for:
 
@@ -19,11 +20,11 @@ Core Rust implementation of Shamir Secret Sharing algorithms with support for:
 - **secp256r1 (NIST P-256)**: NIST standard elliptic curve
 - **ed25519**: Edwards curve for high-performance cryptography
 
-### sssui-wasm
+### foundry-wasm
 
 WebAssembly packaging layer that exposes the Rust functionality to JavaScript environments, enabling cross-platform deployment with native performance.
 
-### sssui-mpc-ts(WIP)
+### foundry-mpc-ts(WIP)
 
 JavaScript/TypeScript bindings and utilities for the WebAssembly module, providing:
 
@@ -44,26 +45,26 @@ JavaScript/TypeScript bindings and utilities for the WebAssembly module, providi
 ### Rust
 
 ```bash
-cargo add sssui-mpc-rs
+cargo add foundry-mpc-rs
 ```
 
 ### JavaScript/TypeScript (via npm)
 
 ```bash
-npm install sssui-mpc-ts
+npm install foundry-mpc-ts
 ```
 
 ### WebAssembly (direct)
 
-The WASM module can be found in the `sssui-wasm` package for direct integration.
+The WASM module can be found in the `foundry-wasm` package for direct integration.
 
 ## Repository Structure
 
 ```
 sss-ui/
-├── sssui-mpc-rs/          # Core Rust implementation
-├── sssui-wasm/        # WebAssembly bindings
-├── sssui-mpc-ts/          # TypeScript/JavaScript package
+├── foundry-mpc-rs/          # Core Rust implementation
+├── foundry-wasm/        # WebAssembly bindings
+├── foundry-mpc-ts/          # TypeScript/JavaScript package
 ├── frost-core/        # FROST protocol core (threshold signatures) forked from ZcashFoundation/frost
 ├── frost-ed25519/     # FROST implementation for ed25519 forked from ZcashFoundation/frost
 └── frost-rerandomized/ # Rerandomized FROST variant forked from ZcashFoundation/frost
@@ -91,4 +92,4 @@ Contributions are welcome! Please ensure all cryptographic implementations are t
 
 ## Repository
 
-https://github.com/chemonoworld/sssui
+https://github.com/chemonoworld/foundry-mpc
