@@ -10,4 +10,7 @@ pub mod sss_ed25519;
 mod tests;
 
 pub use compat::CSCurve;
-pub use k256::Secp256k1;
+pub use keyshares::*;
+pub use point::*;
+pub use sss::*;
+pub use sss_ed25519::*;
