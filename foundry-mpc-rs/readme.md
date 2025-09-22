@@ -1,10 +1,10 @@
-# sssui-mpc-rs
+# foundry-mpc-rs
 
 A Rust implementation of Shamir Secret Sharing (SSS) for Multi-Party Computation (MPC) specifically designed for SUI chain integration. This crate provides secure and efficient cryptographic primitives for distributed secret sharing across multiple elliptic curves.
 
 ## Overview
 
-`sssui-mpc-rs` is the core Rust implementation that powers the SSSui cryptographic library. It implements Shamir Secret Sharing algorithms with support for multiple elliptic curves, enabling secure secret distribution and reconstruction in distributed systems.
+`foundry-mpc-rs` is the core Rust implementation that powers the mpc cryptographic library. It implements Shamir Secret Sharing algorithms with support for multiple elliptic curves, enabling secure secret distribution and reconstruction in distributed systems.
 
 ## Supported Curves
 
@@ -59,14 +59,14 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-sssui-mpc-rs = "0.1.0"
+foundry-mpc-rs = "0.1.0"
 ```
 
 ### Feature Flags
 
 ```toml
 [dependencies]
-sssui-mpc-rs = { version = "0.1.0", features = ["k256", "p256"] }
+foundry-mpc-rs = { version = "0.1.0", features = ["k256", "p256"] }
 ```
 
 - `k256`: Enable secp256k1 support (default)
@@ -77,8 +77,8 @@ sssui-mpc-rs = { version = "0.1.0", features = ["k256", "p256"] }
 ### Basic Secret Sharing
 
 ```rust
-use sssui_mpc_rs::sss::{split, combine};
-use sssui_mpc_rs::Secp256k1;
+use foundry_mpc_rs::sss::{split, combine};
+use foundry_mpc_rs::Secp256k1;
 
 // Split a secret into 3 shares with threshold 2
 let secret = [1u8; 32];
@@ -95,8 +95,8 @@ assert_eq!(secret, reconstructed);
 ### Working with Key Shares
 
 ```rust
-use sssui_mpc_rs::keyshares::KeysharePoints;
-use sssui_mpc_rs::point::Point256;
+use foundry_mpc_rs::keyshares::KeysharePoints;
+use foundry_mpc_rs::point::Point256;
 
 let points = vec![
     Point256 { x: [1u8; 32], y: [2u8; 32] },
@@ -131,4 +131,4 @@ This project is licensed under the MIT License.
 
 ## Repository
 
-https://github.com/chemonoworld/sssui
+https://github.com/chemonoworld/foundry
