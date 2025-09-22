@@ -1,4 +1,4 @@
-import * as wasmModule from "../pkg/sssui_wasm";
+import * as wasmModule from "../pkg-web/sssui_wasm";
 
 export { wasmModule };
 

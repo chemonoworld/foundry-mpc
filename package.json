@@ -3,8 +3,8 @@
     "workspaces": {
         "packages": [
             "scripts/ci",
-            "sssui-mpc-ts",
-            "sssui_wasm"
+            "foundry-mpc-ts",
+            "foundry-mpc-wasm"
         ]
     },
     "packageManager": "yarn@4.7.0",

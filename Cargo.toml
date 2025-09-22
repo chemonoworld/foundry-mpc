@@ -13,7 +13,7 @@ license = "MIT OR Apache-2.0"
 [workspace]
 members = [
     "sssui-mpc-rs",
-    "sssui-wasm/wasm",
+    "foundry-mpc-wasm/wasm",
     "frost-core",
     "frost-ed25519",
     "frost-rerandomized",

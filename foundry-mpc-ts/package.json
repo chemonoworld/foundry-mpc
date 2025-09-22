@@ -1,5 +1,5 @@
 {
-  "name": "sssui-mpc-ts",
+  "name": "foundry-mpc-ts",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -10,8 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chemonoworld/sssui.git",
-    "directory": "sssui-mpc-ts"
+    "url": "https://github.com/chemonoworld/foundry-mpc.git",
+    "directory": "foundry-mpc-ts"
   },
   "scripts": {
     "clean": "del-cli dist",
@@ -19,7 +19,7 @@
     "start": "yarn build && yarn copy:wasm && node ./dist/src/index.js",
     "dev": "node --loader ts-node/esm src/index.ts",
     "typecheck": "tsc --noEmit",
-    "copy:wasm": "del-cli pkg dist/pkg && cp -R ../sssui-wasm/pkg ./pkg && mkdir -p dist && cp -R ./pkg ./dist/pkg",
+    "copy:wasm": "del-cli pkg dist/pkg && cp -R ../foundry-mpc-wasm/pkg-bundler ./pkg && mkdir -p dist && cp -R ./pkg ./dist/pkg",
     "test": "jest"
   },
   "dependencies": {

@@ -1,0 +1,20 @@
+{
+  "name": "foundry-mpc-wasm",
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:web": "wasm-pack build wasm --target web --out-dir ../pkg-web",
+    "build:nodejs": "wasm-pack build wasm --target nodejs --out-dir ../pkg-nodejs",
+    "build:bundler": "wasm-pack build wasm --target bundler --out-dir ../pkg-bundler"
+  },
+  "dependencies": {
+    "wasm-pack": "^0.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "prettier": "^3.5.3",
+    "typescript": "^5"
+  },
+  "packageManager": "yarn@4.7.0"
+}
